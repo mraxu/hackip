@@ -1,10 +1,9 @@
-name: Split Large File
+name: Split Large File by Lines
 
 on:
   push:
     branches:
-      - main  # 触发工作流的分支
-
+      - main 
 jobs:
   split-file:
     runs-on: ubuntu-latest
@@ -13,16 +12,29 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Verify file presence
+        run: |
+          echo "Listing files in the repository:"
+          ls -lh
+          echo "Listing files in data directory (if it exists):"
+          ls -lh data || echo "Data directory does not exist."
+
       - name: Split the large file
         run: |
           # Define variables
-          FILE_PATH="ip-list.txt"  # 修改为实际路径
+          FILE_PATH="ip-list.txt"
           CHUNK_SIZE=131072
           
           # Create a directory to store the split files
           mkdir -p split_files
           
-          # Split the file into chunks
+          # Check if the file exists
+          if [ ! -f "$FILE_PATH" ]; then
+            echo "File $FILE_PATH does not exist!"
+            exit 1
+          fi
+          
+          # Split the file into chunks of CHUNK_SIZE lines each
           split -l $CHUNK_SIZE $FILE_PATH split_files/part_
           
           # Optionally, list the created files

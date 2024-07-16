@@ -1,0 +1,36 @@
+name: Split Large File
+
+on:
+  push:
+    branches:
+      - main  # 触发工作流的分支
+
+jobs:
+  split-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Split the large file
+        run: |
+          # Define variables
+          FILE_PATH="ip-list.txt"  # 修改为实际路径
+          CHUNK_SIZE=131072
+          
+          # Create a directory to store the split files
+          mkdir -p split_files
+          
+          # Split the file into chunks
+          split -l $CHUNK_SIZE $FILE_PATH split_files/part_
+          
+          # Optionally, list the created files
+          echo "Split files:"
+          ls -lh split_files/
+          
+      - name: Upload split files as artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: split-files
+          path: split_files/

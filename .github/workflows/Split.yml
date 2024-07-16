@@ -33,7 +33,7 @@ jobs:
 
     - name: Configure Git
       run: |
-        git config --global user.email "gj-x@qq.com"
+        git config --global user.email "824595419@qq.com"
         git config --global user.name "mraxu"
 
     - name: Add and Commit split files

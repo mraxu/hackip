@@ -1,9 +1,10 @@
-name: Split Large File
+name: Split Large File and Push
 
 on:
   push:
     branches:
       - main 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,6 +12,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        ref: main  # 确保使用正确的分支名
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -26,4 +29,17 @@ jobs:
         FILE_PATH: ip-list.txt
         OUTPUT_PREFIX: split-output  # 替换为输出文件的前缀
       run: |
-        python split_file.py ${{ env.FILE_PATH }} ${{ env.OUTPUT_PREFIX }}
+        split_file.py ${{ env.FILE_PATH }} ${{ env.OUTPUT_PREFIX }}
+
+    - name: Add and Commit split files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add split-output_*.txt
+        git commit -m "Add split files"
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main  # 推送到哪个分支，如果需要推送到新分支，可以改为新的分支名

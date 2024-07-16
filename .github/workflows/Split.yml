@@ -26,4 +26,4 @@ jobs:
         FILE_PATH: ip-list.txt
         OUTPUT_PREFIX: split-output  # 替换为输出文件的前缀
       run: |
-        python scripts/split_file.py ${{ env.FILE_PATH }} ${{ env.OUTPUT_PREFIX }}
+        python split_file.py ${{ env.FILE_PATH }} ${{ env.OUTPUT_PREFIX }}

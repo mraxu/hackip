@@ -31,16 +31,15 @@ jobs:
       run: |
         python split_file.py ${{ env.FILE_PATH }} ${{ env.OUTPUT_PREFIX }}
 
+    - name: Configure Git
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+
     - name: Add and Commit split files
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
         git add split-output_*.txt
         git commit -m "Add split files"
-        git push origin main  # 确保推送到正确的分支
-
-    - name: Push changes
-      uses: ad-m/github-push-action@v0.7.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main  # 推送到主分支
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

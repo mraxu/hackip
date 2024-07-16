@@ -1,9 +1,12 @@
 name: Split Large File and Push
 
 on:
+  pull_request:
   push:
     branches:
-      - main 
+      - main
+  schedule:
+    - cron: "0 */3 * * *" # UTC
 
 jobs:
   build:

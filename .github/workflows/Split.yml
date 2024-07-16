@@ -24,12 +24,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
 
-    - name: Split the file
+    - name: Run the split script
       env:
         FILE_PATH: ip-list.txt
         OUTPUT_PREFIX: split-output  # 替换为输出文件的前缀
       run: |
-        split_file.py ${{ env.FILE_PATH }} ${{ env.OUTPUT_PREFIX }}
+        python split_file.py ${{ env.FILE_PATH }} ${{ env.OUTPUT_PREFIX }}
 
     - name: Add and Commit split files
       run: |
@@ -37,9 +37,10 @@ jobs:
         git config --local user.name "GitHub Action"
         git add split-output_*.txt
         git commit -m "Add split files"
+        git push origin main  # 确保推送到正确的分支
 
     - name: Push changes
-      uses: ad-m/github-push-action@master
+      uses: ad-m/github-push-action@v0.7.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main  # 推送到哪个分支，如果需要推送到新分支，可以改为新的分支名
+        branch: main  # 推送到主分支

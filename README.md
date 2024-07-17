@@ -2,6 +2,7 @@
 
 This blocklist is updated every 2H
 Huge thanks to [borestad](https://www.github.com/borestad)
+Use Python split for fortigate firewall's 131072 line 
 
 Used List:
 - https://github.com/borestad/blocklist-abuseipdb

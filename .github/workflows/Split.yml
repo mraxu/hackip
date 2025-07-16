@@ -29,7 +29,7 @@ jobs:
 
     - name: Run the split script
       env:
-        FILE_PATH: ip-list.txt
+        FILE_PATH: inbound.txt
         OUTPUT_PREFIX: split-output  # 替换为输出文件的前缀
       run: |
         python split_file.py ${{ env.FILE_PATH }} ${{ env.OUTPUT_PREFIX }}

@@ -58,4 +58,4 @@ This blocklist is aggregated from the following reputable sources:
 
 ---
 
-*This README is automatically updated by the update script on 2025-07-16 03:43:10 UTC.*
+*This README is automatically updated by the update script on 2025-07-16 03:51:34 UTC.*

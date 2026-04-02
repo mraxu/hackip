@@ -10,11 +10,11 @@ This project provides aggregated IP blocklists for inbound and outbound traffic,
 
 ## Live Statistics
 
-![Inbound IPs](https://img.shields.io/badge/Inbound_IPs-17.0M-red?style=flat-square) ![Outbound IPs](https://img.shields.io/badge/Outbound_IPs-182.2K-orange?style=flat-square) ![Total IPs](https://img.shields.io/badge/Total_IPs-17.2M-blue?style=flat-square) ![Last Updated](https://img.shields.io/badge/Last_Updated-2026--04--02-green?style=flat-square)
+![Inbound IPs](https://img.shields.io/badge/Inbound_IPs-17.0M-red?style=flat-square) ![Outbound IPs](https://img.shields.io/badge/Outbound_IPs-182.5K-orange?style=flat-square) ![Total IPs](https://img.shields.io/badge/Total_IPs-17.2M-blue?style=flat-square) ![Last Updated](https://img.shields.io/badge/Last_Updated-2026--04--02-green?style=flat-square)
 
-- **Inbound Blocklist**: 1,560,985 networks/IPs covering 16,977,550 individual IP addresses
-- **Outbound Blocklist**: 182,204 networks/IPs covering 182,204 individual IP addresses
-- **Total Coverage**: 17,159,754 individual IP addresses
+- **Inbound Blocklist**: 1,560,840 networks/IPs covering 16,977,405 individual IP addresses
+- **Outbound Blocklist**: 182,451 networks/IPs covering 182,451 individual IP addresses
+- **Total Coverage**: 17,159,856 individual IP addresses
 
 ## Files
 
@@ -58,4 +58,4 @@ This blocklist is aggregated from the following reputable sources:
 
 ---
 
-*This README is automatically updated by the update script on 2026-04-02 01:52:57 UTC.*
+*This README is automatically updated by the update script on 2026-04-02 04:27:09 UTC.*
